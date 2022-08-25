@@ -6,77 +6,68 @@ public class player1 : MonoBehaviour
 {
     public float moveSpeed = 100f;
 
-    public Rigidbody2D rb;
-
-    Vector2 movement;
+    private Rigidbody2D rb;
 
     private Animator ani;    
 
-    private int vel;
-
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        
     }
      void Update()
     {
-        vel = 2;
+        
         Move();
         
     }
 
     void Move()
     {
-        
-        if (Input.GetAxis("Horizontal") > 0f)
-        {
-            ani.SetBool("andando", true);
+    Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+    transform.position += movement*Time.deltaTime * moveSpeed;
+    if(Input.GetAxis("Horizontal") > 0f){ 
 
-        }
-        if (Input.GetAxis("Horizontal") < 0f)
-        {
-            ani.SetBool("andando", true);
+    ani.SetBool("andando", true);
+    
 
-        }
-        if (Input.GetAxis("Horizontal") == 0f)
-        {
-            ani.SetBool("andando", false);
+    }
 
-        }
-        if (Input.GetAxis("Vertical") > 0f)
-        {
-            ani.SetBool("andando", true);
+    if(Input.GetAxis("Horizontal") < 0f){ 
 
+    ani.SetBool("andando", true);
+    
 
-        }
-        if (Input.GetAxis("Vertical") < 0f)
-        {
-            ani.SetBool("andando", true);
+    }
 
+    if(Input.GetAxis("Horizontal") == 0f){ 
 
-        }
-        if (Input.GetAxis("Vertical") == 0f)
-        {
-            ani.SetBool("andando", false);
+    ani.SetBool("andando", false);
 
+    }
+    if(Input.GetAxis("Vertical") > 0f){ 
 
-        }
-        // transform.position += movement * Time.deltaTime * vel; 
-        rb.MovePosition(rb.position + movement * vel * Time.fixedDeltaTime);
+    ani.SetBool("andando2", true);
+    
+
+    }
+
+    if(Input.GetAxis("Vertical") < 0f){ 
+
+    ani.SetBool("andando2", true);
+    
+    }
+
+    if(Input.GetAxis("Vertical") == 0f){ 
+
+    ani.SetBool("andando2", false);
+
     }
     
-    
+    }
      
 
 
-    private void FixedUpdate()
-    {
-        vel = 2;
-
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            vel = 5;
-        }
-
-       }
+   
 }
