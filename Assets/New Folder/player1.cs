@@ -30,14 +30,14 @@ public class player1 : MonoBehaviour
     if(Input.GetAxis("Horizontal") > 0f){ 
 
     ani.SetBool("andando", true);
-    
+    transform.eulerAngles = new Vector3(0f,180f,0f);
 
     }
 
     if(Input.GetAxis("Horizontal") < 0f){ 
 
     ani.SetBool("andando", true);
-    
+    transform.eulerAngles = new Vector3(0f,0f,0f);
 
     }
 

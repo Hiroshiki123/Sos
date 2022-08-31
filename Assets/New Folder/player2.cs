@@ -4,32 +4,70 @@ using UnityEngine;
 
 public class player2 : MonoBehaviour
 {
-    public float moveSpeed = 100f;
+    public float moveSpeed = 10f;
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    Vector2 movement;
+    private Animator ani;    
 
-    
-
-    private int vel;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
+        
+    }
      void Update()
     {
-        vel = 2;
-        movement.x = Input.GetAxisRaw("Horizontal2");
-        movement.y = Input.GetAxisRaw("Vertical2");
+        
+        Move();
+        
+    }
 
+    void Move()
+    {
+    Vector3 movement = new Vector3(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"), 0f);
+    transform.position += movement*Time.deltaTime * moveSpeed;
+    if(Input.GetAxis("Horizontal2") > 0f){ 
+
+    ani.SetBool("andando", true);
+    
+
+    }
+
+    if(Input.GetAxis("Horizontal2") < 0f){ 
+
+    ani.SetBool("andando", true);
+    
+
+    }
+
+    if(Input.GetAxis("Horizontal2") == 0f){ 
+
+    ani.SetBool("andando", false);
+
+    }
+    if(Input.GetAxis("Vertical2") > 0f){ 
+
+    ani.SetBool("andando2", true);
+    
+
+    }
+
+    if(Input.GetAxis("Vertical2") < 0f){ 
+
+    ani.SetBool("andando2", true);
     
     }
 
+    if(Input.GetAxis("Vertical2") == 0f){ 
 
-    private void FixedUpdate()
-    {
-        vel = 2;
+    ani.SetBool("andando2", false);
 
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            vel = 5;
-        }
+    }
+    
+    }
+     
 
-        rb.MovePosition(rb.position + movement * vel * Time.fixedDeltaTime);    }
+
+   
 }
