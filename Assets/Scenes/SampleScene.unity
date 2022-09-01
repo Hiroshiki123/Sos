@@ -351,6 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 968877341}
   - component: {fileID: 968877342}
+  - component: {fileID: 968877343}
   m_Layer: 0
   m_Name: "m\xE3o do lobo_0"
   m_TagString: Untagged
@@ -423,6 +424,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &968877343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968877340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785ef0c733a29c142907a28c1090abc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bala: {fileID: 0}
+  SpawnTiro: {fileID: 0}
 --- !u!1 &1678442796
 GameObject:
   m_ObjectHideFlags: 0
