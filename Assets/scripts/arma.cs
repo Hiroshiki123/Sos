@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class arma : MonoBehaviour
 {
-    SpriteRenderer sprite;
+    
     // Start is called before the first frame update
 
     public GameObject bala;
@@ -12,7 +12,7 @@ public class arma : MonoBehaviour
     
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -43,6 +43,6 @@ public class arma : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
         
-        sprite.flipY = (mousePos.x < screenPoint.x);
+        
     }
 }
