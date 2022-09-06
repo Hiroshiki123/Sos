@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +8,7 @@ public class bala : MonoBehaviour
     [SerializeField] ParticleSystem effect;
     public GameObject collected;
     Rigidbody2D rg;
-    int dano = 2;
+    
 
     void Start()
     {
@@ -21,11 +21,12 @@ public class bala : MonoBehaviour
         morte();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Instantiate(effect, transform.position, transform.rotation);
-        rg.isKinematic = false;
-        Destroy(gameObject, 0.7f);
+       if(collider.gameObject.tag =="inimigo")
+       {
+           Destroy(gameObject);
+       } 
        
     }
     void morte()
