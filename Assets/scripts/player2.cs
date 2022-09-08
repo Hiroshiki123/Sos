@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class player2 : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public float moveSpeed = 100f;
 
     private Rigidbody2D rb;
 
     private Animator ani;    
+
+    private Vector2 moveDirection; 
 
     void Start()
     {
@@ -25,8 +27,10 @@ public class player2 : MonoBehaviour
 
     void Move()
     {
-    Vector3 movement = new Vector3(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"), 0f);
-    transform.position += movement*Time.deltaTime * moveSpeed;
+    float moveX = Input.GetAxisRaw("Horizontal2");
+    float moveY = Input.GetAxisRaw("Vertical2");
+    moveDirection = new Vector2(moveX, moveY).normalized;
+    rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     if(Input.GetAxis("Horizontal2") > 0f){ 
 
     ani.SetBool("andando", true);

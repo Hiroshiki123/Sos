@@ -8,7 +8,10 @@ public class player1 : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private Animator ani;    
+    private Animator ani;   
+
+    private Vector2 moveDirection; 
+
 
     void Start()
     {
@@ -25,8 +28,10 @@ public class player1 : MonoBehaviour
 
     void Move()
     {
-    Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
-    transform.position += movement*Time.deltaTime * moveSpeed;
+    float moveX = Input.GetAxisRaw("Horizontal");
+    float moveY = Input.GetAxisRaw("Vertical");
+    moveDirection = new Vector2(moveX, moveY).normalized;
+    rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     if(Input.GetAxis("Horizontal") > 0f){ 
 
     ani.SetBool("andando", true);
