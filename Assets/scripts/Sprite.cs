@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sprite : MonoBehaviour
 {
 
-    public GameObject mao;
+  
     public SpriteRenderer spr;
 
 

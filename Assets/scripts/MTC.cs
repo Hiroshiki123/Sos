@@ -2,21 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MTC : MonoBehaviour
 {
     public List<Transform> targets;
 
     public Vector3 offset;
+    public float smoothTime =.5f;
 
+    private Vector3 velocidade;
+    private Camera cam;
+
+    void Start()
+    {
+        cam= GetComponent<Camera>();
+    }
     void LateUpdate()
     {
+        if (targets.Count == 0)
+        return;
+
         Vector3 centerPoint = GetCenterPoint();
 
         Vector3 newPosition = centerPoint +offset;
 
-        transform.position = centerPoint;
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocidade, smoothTime);
+        
 
     }
+
 
     Vector3 GetCenterPoint()
     {
