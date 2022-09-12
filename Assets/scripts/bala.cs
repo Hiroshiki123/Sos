@@ -27,8 +27,13 @@ public class bala : MonoBehaviour
        {
            Destroy(gameObject);
        } 
-       
+       if(collider.gameObject.tag =="parede")
+       {
+           Destroy(gameObject);
+       } 
+             
     }
+    
     void morte()
     {
         Destroy(gameObject, 1.5f);
