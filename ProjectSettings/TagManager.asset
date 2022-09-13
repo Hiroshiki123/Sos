@@ -8,6 +8,11 @@ TagManager:
   - porta
   - parede
   - flecha
+  - porta2
+  - portal
+  - porta 3
+  - porta4
+  - cristal
   layers:
   - Default
   - TransparentFX
